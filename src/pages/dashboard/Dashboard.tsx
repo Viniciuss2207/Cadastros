@@ -1,4 +1,4 @@
-import { FerramentasDalistagem } from "../../shared/components";
+import { FerramentasDalistagem, FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 
 
@@ -8,10 +8,7 @@ return(
   <LayoutBaseDePagina titulo='Pagina inicial' 
   barraDeFerramentas=
 {(
-    <FerramentasDalistagem
-    mostrarInputBusca
-    textoDaBotaoNovo='Novo'
-    />
+    <FerramentasDeDetalhe/>
 )}> 
   Testando 
   </LayoutBaseDePagina>
