@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, useTheme } from "@mui/material";
+import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from "@mui/material";
 
 interface IFerramentasDeDetalheProps{
 textoBotaoNovo?: string;
@@ -9,12 +9,20 @@ mostrarBotãoApagar?:boolean;
 mostrarBotãoSalvar?:boolean;
 mostrarBotãoSalvarEFechar?:boolean;
 
+mostrarBotãoNovoCarregando?: boolean;
+mostrarBotãoVoltarCarregando?:boolean;
+mostrarBotãoApagarCarregando?:boolean;
+mostrarBotãoSalvarCarregando?:boolean;
+mostrarBotãoSalvarEFecharCarregando?:boolean;
+
 
 aoClicarEmNovo?:() => void;
 aoClicarEmVoltar?:() => void;
 aoClicarEmApagar?: () => void;
 aoClicarEmSalvar?: () => void;
 aoClicarEmSalvarEFechar?: () => void;
+
+
 }
 
 export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
@@ -25,6 +33,12 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
     mostrarBotãoApagar = true,
     mostrarBotãoSalvar = true,
     mostrarBotãoSalvarEFechar = false,
+
+    mostrarBotãoNovoCarregando = false,
+    mostrarBotãoVoltarCarregando = false,
+    mostrarBotãoApagarCarregando = false,
+    mostrarBotãoSalvarCarregando = false,
+    mostrarBotãoSalvarEFecharCarregando = false,
 
     aoClicarEmNovo,
     aoClicarEmVoltar,
@@ -46,51 +60,76 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
         alignItems="center"
         component={Paper}
     >
-            {mostrarBotãoSalvar && (
+            {(mostrarBotãoSalvar && ! mostrarBotãoSalvarCarregando )&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='contained'
                     onClick={aoClicarEmSalvar}
                     startIcon={<Icon>save</Icon>}
-                >Salvar</Button>)}
+                >Salvar</Button>
+            )}
 
-            {mostrarBotãoSalvarEFechar && (
+            {mostrarBotãoSalvarCarregando &&
+                (<Skeleton width={110} height={60} />
+                )}
+
+            {(mostrarBotãoSalvarEFechar && ! mostrarBotãoSalvarEFecharCarregando )&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmSalvarEFechar}
                     startIcon={<Icon>save</Icon>}
-                >Salvar e voltar</Button>)}
+                >Salvar e voltar</Button>
+            )}
 
-            {mostrarBotãoApagar && (
+            {mostrarBotãoSalvarEFecharCarregando &&
+                (<Skeleton width={180} height={60} />
+                )}
+
+            {(mostrarBotãoApagar && !mostrarBotãoApagarCarregando )&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmApagar}
                     startIcon={<Icon>delete</Icon>}
-                >Apagar</Button>)}
+                >Apagar</Button>
+            )}
 
-            {mostrarBotãoNovo && (
+            {mostrarBotãoApagarCarregando &&
+                (<Skeleton width={110} height={60} />
+                )}
+
+            {(mostrarBotãoNovo && !mostrarBotãoNovoCarregando)&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmNovo}
                     startIcon={<Icon>add</Icon>}
-                >{textoBotaoNovo}</Button>)}
+                >{textoBotaoNovo}</Button>
+            )}
+
+            {mostrarBotãoNovoCarregando &&
+                (<Skeleton width={110} height={60} />
+                )}
             <Divider variant='middle' orientation='vertical' />
 
-            {mostrarBotãoVoltar && (
+            {(mostrarBotãoVoltar && ! mostrarBotãoVoltarCarregando)&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmVoltar}
                     startIcon={<Icon>arrow_back</Icon>}
-                >Voltar</Button>)} 
+                >Voltar</Button>
+            )}
+
+            {mostrarBotãoVoltarCarregando &&
+                (<Skeleton width={110} height={60} />
+                )}
         </Box>
     );
 };
