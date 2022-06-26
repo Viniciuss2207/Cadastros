@@ -8,7 +8,12 @@ return(
   <LayoutBaseDePagina titulo='Pagina inicial' 
   barraDeFerramentas=
 {(
-    <FerramentasDeDetalhe mostrarBotãoSalvarEFechar mostrarBotãoSalvarEFecharCarregando  />
+    <FerramentasDeDetalhe 
+    mostrarBotãoSalvarEFechar  
+    mostrarBotãoSalvarEFecharCarregando
+    mostrarBotãoNovo
+    mostrarBotãoVoltar={false}
+    />
 )}> 
   Testando 
   </LayoutBaseDePagina>

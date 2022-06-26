@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from "@mui/material";
+import { Box, Button, Divider, Icon, Paper, Skeleton, Theme, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 interface IFerramentasDeDetalheProps{
 textoBotaoNovo?: string;
@@ -28,13 +28,13 @@ aoClicarEmSalvarEFechar?: () => void;
 export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
     textoBotaoNovo = 'Novo',
 
-    mostrarBotãoNovo = true,
-    mostrarBotãoVoltar = true,
-    mostrarBotãoApagar = true,
+    mostrarBotãoNovo: mostrarBotaoNovo = true,
+    mostrarBotãoVoltar: mostrarBotaoVoltar = true,
+    mostrarBotãoApagar: mostrarBotaoApagar = true,
     mostrarBotãoSalvar = true,
     mostrarBotãoSalvarEFechar = false,
 
-    mostrarBotãoNovoCarregando = false,
+    mostrarBotãoNovoCarregando: mostrarBotaoNovoCarregando = false,
     mostrarBotãoVoltarCarregando = false,
     mostrarBotãoApagarCarregando = false,
     mostrarBotãoSalvarCarregando = false,
@@ -47,6 +47,8 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
     aoClicarEmSalvarEFechar,
 
 }) => {
+    const smDown = useMediaQuery((theme:Theme) => theme.breakpoints.down('sm'));
+    const mdDown = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
     const theme = useTheme();
 
     return(
@@ -67,64 +69,94 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps>= ({
                     variant='contained'
                     onClick={aoClicarEmSalvar}
                     startIcon={<Icon>save</Icon>}
-                >Salvar</Button>
+                >
+                    <Typography  variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden' >
+                        Salvar
+                    </Typography>
+                    
+                </Button>
             )}
 
             {mostrarBotãoSalvarCarregando &&
                 (<Skeleton width={110} height={60} />
                 )}
 
-            {(mostrarBotãoSalvarEFechar && ! mostrarBotãoSalvarEFecharCarregando )&&(
+            {(mostrarBotãoSalvarEFechar && ! mostrarBotãoSalvarEFecharCarregando && !smDown && !mdDown)&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmSalvarEFechar}
                     startIcon={<Icon>save</Icon>}
-                >Salvar e voltar</Button>
+                >
+                   <Typography  variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden' >
+                        Salvar e Voltar
+                    </Typography>
+                </Button>
             )}
 
-            {mostrarBotãoSalvarEFecharCarregando &&
+            {(mostrarBotãoSalvarEFecharCarregando && !smDown && !mdDown) &&
                 (<Skeleton width={180} height={60} />
                 )}
 
-            {(mostrarBotãoApagar && !mostrarBotãoApagarCarregando )&&(
+            {(mostrarBotaoApagar && !mostrarBotãoApagarCarregando )&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmApagar}
                     startIcon={<Icon>delete</Icon>}
-                >Apagar</Button>
+                >
+                   <Typography  variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden' >
+                       apagar
+                    </Typography>
+                </Button>
             )}
 
             {mostrarBotãoApagarCarregando &&
                 (<Skeleton width={110} height={60} />
                 )}
 
-            {(mostrarBotãoNovo && !mostrarBotãoNovoCarregando)&&(
+            {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando && !smDown)&&( 
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmNovo}
                     startIcon={<Icon>add</Icon>}
-                >{textoBotaoNovo}</Button>
+                >
+                    <Typography  variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden' >
+                       {textoBotaoNovo}
+                    </Typography>
+                </Button>
             )}
 
-            {mostrarBotãoNovoCarregando &&
+            {(mostrarBotaoNovoCarregando && !smDown ) &&
                 (<Skeleton width={110} height={60} />
                 )}
-            <Divider variant='middle' orientation='vertical' />
+                
+                {
+        (
+          mostrarBotaoVoltar &&
+          (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotãoSalvar || mostrarBotãoSalvarEFechar)
+        ) && (
+          <Divider variant='middle' orientation='vertical' />
+        )
+      }
 
-            {(mostrarBotãoVoltar && ! mostrarBotãoVoltarCarregando)&&(
+
+            {(mostrarBotaoVoltar && ! mostrarBotãoVoltarCarregando)&&(
                 <Button
                     color='primary'
                     disableElevation
                     variant='outlined'
                     onClick={aoClicarEmVoltar}
                     startIcon={<Icon>arrow_back</Icon>}
-                >Voltar</Button>
+                >
+                  <Typography  variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden' >
+                        Voltar
+                    </Typography>
+                </Button>
             )}
 
             {mostrarBotãoVoltarCarregando &&
