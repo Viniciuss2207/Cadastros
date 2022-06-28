@@ -1,6 +1,7 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
+import { Environment } from "../../environment";
 
-import { Enviroment } from "../../environment";
+
 
 interface IFerramentasDalistagemProps{
     textoDaBusca?: string;
@@ -38,7 +39,7 @@ export const FerramentasDalistagem: React.FC<IFerramentasDalistagemProps> = ({
         <TextField
           size="small"
           value={textoDaBusca}
-          placeholder={Enviroment.INPUT_DE_BUSCA}
+          placeholder={Environment.INPUT_DE_BUSCA}
           onChange={(e) => aoMudarTextoDeBusca?.(e.target.value)}
         />
        )}

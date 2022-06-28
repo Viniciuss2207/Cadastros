@@ -1,20 +1,19 @@
-export const Enviroment = {
-     /**
-     * Define a quantidade de linhas a ser carregadas por padrão 
+export const Environment = {
+    /**
+     * Define a quantidade de linhas a ser carregada por padrão nas listagens
      */
     LIMITE_DE_LINHAS: 10,
     /**
-     *  Placeholder exibidos nas inputs
+     * Placeholder exibido nas inputs
      */
     INPUT_DE_BUSCA: 'Pesquisar...',
     /**
-     *  Texto exibido quando nenhum registro é enxontrado em uma listagem 
+     * Texto exibido quando nenhum registro é encontrado em uma listagem
      */
-    LISTAGEM_VAZIA: 'Nenhum registro encontrado ',
+    LISTAGEM_VAZIA: 'Nenhum registro encontrado.',
     /**
-     *  Url base de consultado dos dados dessa aplicação 
+     * Url base de consultado dos dados dessa aplicação
      */
-    URL_BASE: 'http://localhost:3333'
-};
-
+    URL_BASE: 'http://localhost:3333',
+  };
 
