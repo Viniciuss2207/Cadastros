@@ -1,8 +1,9 @@
 {
     "pessoas": [{
         "id": 1,
-        "nome": "juca",
-        "sobrenome": "Silva"
+        "email": "juca@gmail.com",
+        "cidade": 1,
+        "nomeCompleto":"juca Paulin"
     }]
    
 }
