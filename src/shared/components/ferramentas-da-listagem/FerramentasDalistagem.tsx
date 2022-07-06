@@ -8,7 +8,7 @@ interface IFerramentasDalistagemProps{
     mostrarInputBusca?:boolean;
     aoMudarTextoDeBusca?:(novoTexto: string) => void;
 
-    textoDaBotaoNovo?: string;
+    textoBotaoNovo?: string;
     mostrarInputBotaoNovo?:boolean;
     aoClicarEmNovo?:() => void;
     
@@ -20,7 +20,7 @@ export const FerramentasDalistagem: React.FC<IFerramentasDalistagemProps> = ({
      aoMudarTextoDeBusca,
 
      aoClicarEmNovo,
-     textoDaBotaoNovo='Novo',
+     textoBotaoNovo: textoDaBotaoNovo='Novo',
      mostrarInputBotaoNovo= true ,
 }) => {
     const theme = useTheme();
