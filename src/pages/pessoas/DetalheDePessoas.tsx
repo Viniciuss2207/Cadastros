@@ -1,11 +1,11 @@
-import { LinearProgress } from "@mui/material";
+import { Form } from "@unform/web";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-
+import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
-import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
+import { VTextField } from "../../shared/forms";
 
 
 export const DetalheDePessoas: React.FC = () => {
@@ -72,14 +72,16 @@ export const DetalheDePessoas: React.FC = () => {
                  aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
                 />
                }
-              > 
+              >  
+              <Form onSubmit = {(dados) =>console.log(dados)}  >
+
+               <VTextField
+               name='nomeCompleto'
 
 
-            {isLoading && (
-                <LinearProgress variant='indeterminate' />
-            )}
-
-          <p>DetalheDePessoas {id}</p>  
+               />
+            <button type='submit'>Submit</button>
+              </Form>
         </LayoutBaseDePagina>
         
     );

@@ -1,18 +1,6 @@
 {
   "pessoas": [
     {
-      "id": 6,
-      "email": "vini@gmail.com",
-      "cidade": 1,
-      "nomeCompleto": "vini"
-    },
-    {
-      "id": 7,
-      "email": "tete@gmail.com",
-      "cidade": 1,
-      "nomeCompleto": "tete"
-    },
-    {
       "id": 8,
       "email": "paulo@gmail.com",
       "cidade": 1,
