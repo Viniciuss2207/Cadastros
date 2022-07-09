@@ -7,12 +7,13 @@ import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 import { VTextField } from "../../shared/forms";
 import { FormHandles } from "@unform/core";
+import { Numbers } from "@mui/icons-material";
 
 
-interface iFormData{
- email:string;
- cidadeId:string;
- nomeCompleto:string;
+interface iFormData {
+    email: string;
+    cidadeId: number;
+    nomeCompleto: string;
 }
 
 
@@ -40,7 +41,7 @@ export const DetalheDePessoas: React.FC = () => {
                         navigate('/pessoas')
                     } else {
                         setNome(result.nomeCompleto)
-                        console.log(result)
+                        formRef.current?.setData(result);
                     }
                 });
         }
@@ -48,8 +49,39 @@ export const DetalheDePessoas: React.FC = () => {
 
 
 
-    const handleSave = (dados:iFormData ) => {
-        console.log(dados);
+
+    const handleSave = (dados: iFormData) => {
+        setIsLoading(true);
+
+        if (id === 'nova') {
+            PessoasService
+                .create(dados)
+                .then((result) => {
+                    setIsLoading(false);
+
+                    if (result instanceof Error) {
+                        alert(result.message);
+                    } else {
+                        navigate(`/pessoas/detalhe/${result}`);
+                    }
+                });
+
+        } else {
+            PessoasService
+                .updateById(Number(id), { id: Number(id), ...dados })
+                .then((result) => {
+                    setIsLoading(false);
+
+                    if (result instanceof Error) {
+                        alert(result.message);
+                    }
+                });
+
+        }
+
+
+
+
     };
 
     const handleDelete = (id: number) => {
@@ -86,9 +118,9 @@ export const DetalheDePessoas: React.FC = () => {
         >
             <Form ref={formRef} onSubmit={handleSave}  >
 
-                <VTextField name='nomeCompleto' />
-                <VTextField name='email' />
-                <VTextField name='cidadeId' />
+                <VTextField placeholder="Nome completo" name='nomeCompleto' />
+                <VTextField placeholder="Email" name='email' />
+                <VTextField placeholder="Cidade Id" name='cidadeId' />
             </Form>
         </LayoutBaseDePagina>
 

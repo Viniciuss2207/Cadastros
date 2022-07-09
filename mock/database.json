@@ -41,6 +41,12 @@
       "email": "mauro@gmail.com",
       "cidade": 1,
       "nomeCompleto": "mauro"
+    },
+    {
+      "id": 16,
+      "nomeCompleto": "peterson careca ",
+      "email": "conro@gmail.com",
+      "cidadeId": "1"
     }
   ]
 }
