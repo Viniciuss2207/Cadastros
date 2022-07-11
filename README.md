@@ -1,3 +1,3 @@
-<div>Cadastros</div>
+#Cadastros 
 <div>Pagina de cadastros feita usando React e material ui </div>
 <div>Status: Em desenvolvimento</div>
