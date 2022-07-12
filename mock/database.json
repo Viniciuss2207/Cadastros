@@ -48,40 +48,16 @@
       "cidadeId": "1"
     },
     {
-      "nomeCompleto": "pedro pedro ",
-      "email": "pedro@gmail.coma",
-      "cidadeId": "14",
-      "id": 17
-    },
-    {
-      "id": 18,
-      "nomeCompleto": "jucquinha silva",
-      "email": "juquinha@gmail.com",
-      "cidadeId": "10"
-    },
-    {
-      "nomeCompleto": "juquinha silva",
-      "email": "juquinha@gmail.com",
-      "cidadeId": "32",
-      "id": 19
-    },
-    {
-      "nomeCompleto": "plebeu silva ",
-      "email": "plebe@gmail.com",
-      "cidadeId": "12",
-      "id": 20
-    },
-    {
       "nomeCompleto": "corno silva ",
       "email": "silva@gmail.com",
       "cidadeId": "1",
       "id": 21
-    },
+    }
+  ],
+  "cidades": [
     {
-      "id": 22,
-      "nomeCompleto": "jorge conro ",
-      "email": "rorge@gmail.com",
-      "cidadeId": "6"
+      "nome": "Sapucaia Do Sul ",
+      "id": 1
     }
   ]
 }
