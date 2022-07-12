@@ -11,17 +11,18 @@ import { LayoutBaseDePagina } from "../../shared/layouts";
 
 
 
-interface iFormData {
+interface IFormData {
     email: string;
     cidadeId: number;
     nomeCompleto: string;
 }
 
-const formValidationSchema: yup.SchemaOf<iFormData> = yup.object().shape({
+const formValidationSchema: yup.SchemaOf<IFormData> = yup.object().shape({
   cidadeId: yup.number().required(),
   email: yup.string().required().email(),
   nomeCompleto: yup.string().required().min(3),
 });
+
 
 
 export const DetalheDePessoas: React.FC = () => {
@@ -62,7 +63,7 @@ export const DetalheDePessoas: React.FC = () => {
 
 
 
-    const handleSave = (dados: iFormData) => {
+    const handleSave = (dados: IFormData) => {
 
       formValidationSchema.
       validate(dados, { abortEarly: false })
