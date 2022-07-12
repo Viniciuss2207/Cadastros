@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Grid, LinearProgress, Paper, Typography } from "@mui/material";
-
+import * as yup from 'yup';
 
 import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
-import { VTextField, VForm, useVForm } from "../../shared/forms";
+import { VTextField, VForm, useVForm, IVFormsErrors } from "../../shared/forms";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
+
 
 
 
@@ -16,6 +17,11 @@ interface iFormData {
     nomeCompleto: string;
 }
 
+const formValidationSchema: yup.SchemaOf<iFormData> = yup.object().shape({
+  cidadeId: yup.number().required(),
+  email: yup.string().required().email(),
+  nomeCompleto: yup.string().required().min(3),
+});
 
 
 export const DetalheDePessoas: React.FC = () => {
@@ -57,11 +63,15 @@ export const DetalheDePessoas: React.FC = () => {
 
 
     const handleSave = (dados: iFormData) => {
+
+      formValidationSchema.
+      validate(dados, { abortEarly: false })
+      .then((dadosValidados) => {
         setIsLoading(true);
 
         if (id === 'nova') {
             PessoasService
-                .create(dados)
+                .create(dadosValidados)
                 .then((result) => {
                     setIsLoading(false);
 
@@ -79,7 +89,7 @@ export const DetalheDePessoas: React.FC = () => {
 
         } else {
             PessoasService
-                .updateById(Number(id), { id: Number(id), ...dados })
+                .updateById(Number(id), { id: Number(id), ...dadosValidados })
                 .then((result) => {
                     setIsLoading(false);
 
@@ -93,8 +103,24 @@ export const DetalheDePessoas: React.FC = () => {
                     }
                 });
 
-        }
+        };
 
+
+      })
+      .catch((errors: yup.ValidationError) =>{
+        const validationErrors: IVFormsErrors = {};
+
+        errors.inner.forEach(error => {
+          if(!error.path ) return;
+
+          validationErrors[error.path] = error.message;
+        });
+
+          formRef.current?.setErrors(validationErrors);
+      });
+      
+      
+      
 
 
 
