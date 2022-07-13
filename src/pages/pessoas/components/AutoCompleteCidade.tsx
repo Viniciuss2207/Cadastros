@@ -12,9 +12,8 @@ type TAutoCompleteOption = {
 interface IAutoCompleteCidadeProps {
   isExternalLoading?: boolean;
 }
-
 export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({ isExternalLoading = false }) => {
-  const { fieldName, registerField, defaultValue, error, clearError }  = useField('cidadeId');
+  const { fieldName, registerField, defaultValue, error, clearError } = useField('cidadeId');
   const { debounce } = useDebounce();
 
   const [selectedId, setSelectedId] = useState<number | undefined>(defaultValue);
@@ -25,11 +24,11 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({ isExter
 
   useEffect(() => {
     registerField({
-      name:fieldName,
-      getValue: () =>selectedId ,
+      name: fieldName,
+      getValue: () => selectedId,
       setValue: (_, newSelectedId) => setSelectedId(newSelectedId),
     });
-  },[registerField, fieldName, selectedId]);
+  }, [registerField, fieldName, selectedId]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,22 +39,20 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({ isExter
           setIsLoading(false);
 
           if (result instanceof Error) {
-            //alert(result.message);
+            // alert(result.message);
           } else {
             console.log(result);
 
             setOpcoes(result.data.map(cidade => ({ id: cidade.id, label: cidade.nome })));
-
           }
         });
     });
   }, [busca]);
 
-
   const autoCompleteSelectedOption = useMemo(() => {
     if (!selectedId) return null;
 
-    const selectedOption = opcoes.find(opcao => opcao.id === selectedId)
+    const selectedOption = opcoes.find(opcao => opcao.id === selectedId);
     if (!selectedOption) return null;
 
     return selectedOption;
@@ -63,26 +60,24 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({ isExter
 
 
   return (
-
     <Autocomplete
-        openText='Abrir'
-        closeText='Fechar'
-        noOptionsText='Sem opções'
-        loadingText='carregando...'
+      openText='Abrir'
+      closeText='Fechar'
+      noOptionsText='Sem opções'
+      loadingText='Carregando...'
 
-        disablePortal
-    
-      loading={isLoading}
+      disablePortal
+
       options={opcoes}
+      loading={isLoading}
       disabled={isExternalLoading}
       value={autoCompleteSelectedOption}
       onInputChange={(_, newValue) => setBusca(newValue)}
-      onChange={(_, newValue) => { setSelectedId(newValue?.id); setBusca(''); clearError();}}
-      popupIcon={(isExternalLoading || isLoading) ? <CircularProgress size={20} /> : undefined}
+      onChange={(_, newValue) => { setSelectedId(newValue?.id); setBusca(''); clearError(); }}
+      popupIcon={(isExternalLoading || isLoading) ? <CircularProgress size={28} /> : undefined}
       renderInput={(params) => (
         <TextField
           {...params}
-
 
           label="Cidade"
           error={!!error}

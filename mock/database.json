@@ -1,11 +1,6 @@
 {
   "pessoas": [
     {
-      "id": 8,
-      "nomeCompleto": "Paulin paulo",
-      "email": "paulo@gmail.com"
-    },
-    {
       "id": 9,
       "email": "pedrinho@gmail.com",
       "cidade": 1,
@@ -27,7 +22,7 @@
       "id": 14,
       "nomeCompleto": "josnel",
       "email": "josnel@gmail.com",
-      "cidadeId": 5
+      "cidadeId": 1
     },
     {
       "id": 15,
@@ -64,28 +59,26 @@
       "email": "ff@gmail.com",
       "cidadeId": 1,
       "id": 23
+    },
+    {
+      "nomeCompleto": "cornin",
+      "email": "vagabundo@gmai.com",
+      "cidadeId": 2,
+      "id": 24
     }
   ],
   "cidades": [
     {
-      "nome": "Sapucaia Do Sul ",
-      "id": 1
+      "id": 1,
+      "nome": "Sapucaia Do Sul "
     },
     {
       "id": 2,
       "nome": "são paulo "
     },
     {
-      "id": 3,
-      "nome": "novo hamburgo "
-    },
-    {
       "nome": "são leo ",
       "id": 4
-    },
-    {
-      "nome": "caxias",
-      "id": 5
     },
     {
       "nome": "esteio ",
@@ -94,6 +87,10 @@
     {
       "nome": "capão",
       "id": 7
+    },
+    {
+      "nome": "guaiba",
+      "id": 8
     }
   ]
 }

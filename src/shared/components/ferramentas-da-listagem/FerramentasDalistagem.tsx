@@ -4,24 +4,22 @@ import { Environment } from "../../environment";
 
 
 interface IFerramentasDalistagemProps{
-    textoDaBusca?: string;
-    mostrarInputBusca?:boolean;
-    aoMudarTextoDeBusca?:(novoTexto: string) => void;
-
-    textoBotaoNovo?: string;
-    mostrarInputBotaoNovo?:boolean;
-    aoClicarEmNovo?:() => void;
+  textoDaBusca?: string;
+  mostrarInputBusca?: boolean;
+  aoMudarTextoDeBusca?: (novoTexto: string) => void;
+  textoBotaoNovo?: string;
+  mostrarBotaoNovo?: boolean;
+  aoClicarEmNovo?: () => void;
     
 };
 
 export const FerramentasDalistagem: React.FC<IFerramentasDalistagemProps> = ({
-    textoDaBusca='',
-     mostrarInputBusca= false,
-     aoMudarTextoDeBusca,
-
-     aoClicarEmNovo,
-     textoBotaoNovo: textoDaBotaoNovo='Novo',
-     mostrarInputBotaoNovo= true ,
+  textoDaBusca = '',
+  aoMudarTextoDeBusca,
+  mostrarInputBusca = false,
+  aoClicarEmNovo,
+  textoBotaoNovo = 'Novo',
+  mostrarBotaoNovo = true,
 }) => {
     const theme = useTheme();
     return(
@@ -46,14 +44,14 @@ export const FerramentasDalistagem: React.FC<IFerramentasDalistagemProps> = ({
 
             
             <Box flex={1} display="flex" justifyContent="end" >
-           { mostrarInputBotaoNovo &&(
+           { mostrarBotaoNovo &&(
              <Button
              color='primary'
              disableElevation
              variant='contained'
              onClick={aoClicarEmNovo}
              endIcon={<Icon>add</Icon>}
-             >{textoDaBotaoNovo}</Button>  
+             >{textoBotaoNovo}</Button>  
               
            )}
 
