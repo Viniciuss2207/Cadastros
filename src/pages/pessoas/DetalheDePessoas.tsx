@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
 import { VTextField, VForm, useVForm, IVFormsErrors } from "../../shared/forms";
+import { AutoCompleteCidade } from "./components/AutoCompleteCidade";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 
@@ -43,6 +44,7 @@ export const DetalheDePessoas: React.FC = () => {
             PessoasService.getById(Number(id))
                 .then((result) => {
                     setIsLoading(false);
+
                     if (result instanceof Error) {
                         alert(result.message)
                         navigate('/pessoas')
@@ -55,7 +57,7 @@ export const DetalheDePessoas: React.FC = () => {
           formRef.current?.setData({
             nomeCompleto: '', 
             email: '', 
-            cidadeId: '', 
+            cidadeId: undefined, 
           });
         }
     }, [id]);
@@ -65,6 +67,8 @@ export const DetalheDePessoas: React.FC = () => {
 
     const handleSave = (dados: IFormData) => {
 
+      console.log(dados)
+         
       formValidationSchema.
       validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
@@ -117,6 +121,7 @@ export const DetalheDePessoas: React.FC = () => {
           validationErrors[error.path] = error.message;
         });
 
+          
           formRef.current?.setErrors(validationErrors);
       });
       
@@ -200,11 +205,7 @@ export const DetalheDePessoas: React.FC = () => {
 
             <Grid container item direction="row" spacing={2}>
               <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                <VTextField
-                  fullWidth
-                  label='Cidade'
-                  name='cidadeId'
-                  disabled={isLoading}
+                <AutoCompleteCidade isExternalLoading={isLoading}
                 />
               </Grid>
             </Grid>

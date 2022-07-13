@@ -25,9 +25,9 @@
     },
     {
       "id": 14,
+      "nomeCompleto": "josnel",
       "email": "josnel@gmail.com",
-      "cidade": 1,
-      "nomeCompleto": "josnel"
+      "cidadeId": 5
     },
     {
       "id": 15,
@@ -52,12 +52,48 @@
       "email": "silva@gmail.com",
       "cidadeId": "1",
       "id": 21
+    },
+    {
+      "nomeCompleto": "jose pereira",
+      "email": "pereita@gmail.com",
+      "cidadeId": 2,
+      "id": 22
+    },
+    {
+      "nomeCompleto": "feio ",
+      "email": "ff@gmail.com",
+      "cidadeId": 1,
+      "id": 23
     }
   ],
   "cidades": [
     {
       "nome": "Sapucaia Do Sul ",
       "id": 1
+    },
+    {
+      "id": 2,
+      "nome": "são paulo "
+    },
+    {
+      "id": 3,
+      "nome": "novo hamburgo "
+    },
+    {
+      "nome": "são leo ",
+      "id": 4
+    },
+    {
+      "nome": "caxias",
+      "id": 5
+    },
+    {
+      "nome": "esteio ",
+      "id": 6
+    },
+    {
+      "nome": "capão",
+      "id": 7
     }
   ]
 }
