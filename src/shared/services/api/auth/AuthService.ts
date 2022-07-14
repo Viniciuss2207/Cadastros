@@ -5,7 +5,7 @@ interface IAuth{
     accessToken: string;
 }
 
-const auth =  async (email: string, password: string): Promise<number | Error> => { 
+const auth =  async (email: string, password: string): Promise<IAuth| Error> => { 
     try {
         
 
