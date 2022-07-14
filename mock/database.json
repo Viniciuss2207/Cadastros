@@ -92,5 +92,8 @@
       "nome": "guaiba",
       "id": 8
     }
-  ]
+  ],
+  "auth":{
+    "accessToken": "vvvv.nnnnnnn.cccccc"
+  }
 }

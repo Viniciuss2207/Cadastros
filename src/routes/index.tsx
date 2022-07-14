@@ -9,7 +9,7 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOptions ([
       {
-          icon:'home',
+        icon:'home',
         path:'/pagina-inicial',
         label:'Página inicial',
       },
