@@ -1,6 +1,6 @@
 <h1 align="center"> Pagina de cadastros de cidades e pessoas </h1>
 
-<h2>Yarn start e yarn mock para inicar a aplicação </h2>
+<h2 align="center">Yarn start e yarn mock para inicar a aplicação </h2>
 
 ![login light](https://user-images.githubusercontent.com/97629782/178925561-00cdc373-3c8e-4c9c-8d4f-610877bcccd6.JPG)
 
