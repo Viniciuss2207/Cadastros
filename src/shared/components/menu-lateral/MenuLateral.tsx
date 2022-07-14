@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 
-import { useAppThemeContext, useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useAuthContext, useDrawerContext } from "../../contexts";
 
 interface IMenuLateralProps {
   children: React.ReactNode;
@@ -42,6 +42,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
  
   const {isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
   const {toggleTheme } = useAppThemeContext();
+  const {  logout } = useAuthContext();
 
   return (
     <>
@@ -70,12 +71,18 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
 
           <Box>
             <List component="nav">
-             <ListItemButton  onClick={toggleTheme}>
-              <ListItemIcon>
-                <Icon>dark_mode</Icon>
-               </ListItemIcon>
-              <ListItemText primary="Alternar tema" />
-             </ListItemButton>
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>dark_mode</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Alternar tema" />
+              </ListItemButton>
+              <ListItemButton onClick={logout}>
+                <ListItemIcon>
+                  <Icon>logout</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Sair" />
+              </ListItemButton>
             </List>
           </Box>
 
